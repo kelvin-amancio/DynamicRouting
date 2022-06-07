@@ -1,0 +1,52 @@
+<div class="height">
+  <div class="card">
+    <div class="card-body">
+<table class="table table-striped ">
+  <thead class="thead-light">
+    <tr>
+      <th>Lote</th>
+      <th><button type="button" class="btn btn-danger btn-sm text-center bbbtn"
+        (click)="alterarImagem()">
+        <i class="{{mostrarImagem ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+        {{mostrarImagem ? 'Mostrar' : 'Ocultar'}}</button></th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Opções</th>
+
+      <!-- <th>Lote</th> -->
+    </tr>
+  </thead>
+  <!-- No Tbody - colocar ngif para caso a função exista apareça, se não nao aparece -->
+  <tbody *ngIf="projetod">
+    <tr *ngFor="let projetos of projetod">
+      <td>{{projetos.Lote}}</td>
+      <td><img [collapse]="mostrarImagem" [isAnimated]="true" src="/assets/coxinha.jpg" [style.width.px]="wthsize"></td>
+      <td>
+        <a >{{projetos.Tema}}</a>
+      </td>
+      <td>  {{projetos.Local}}</td>
+      <td></td>
+
+
+   <td>
+     <button type="button" class="btn btn-primary btn-sm "> <i class="fa fa-edit"></i> Editar</button>
+     <button type="button" class="btn btn-danger btn-sm bbtn"><i class="fa fa-trash"></i> Excluir</button>
+    </td>
+      <!-- <td></td> -->
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!projetos">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h3>Nenhum item encontrado!</h3>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div></div>
+
+<h3>TESTE 1: {{projetos | json}}</h3><br>
+<h3>TESTE 2: {{projeto | json}}</h3><br>
+<h2>TESTE 3: {{projetod | json}}</h2>
+</div>

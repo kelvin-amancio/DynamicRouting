@@ -1,0 +1,69 @@
+<div class="container p-3">
+
+  <div class="form-inline col-lg-2">
+    <div class="form-group mb-1">
+      <input type="text" class="form-control mr-2 mb-2"  placeholder="buscar" [(ngModel)]="filtroLista">
+
+    </div>
+  </div>
+<!-- ? - significa pergunta, no caso se for true aparece mostrar, falso ocultar -->
+<table class="table table-striped ">
+  <thead class="thead-light">
+    <tr>
+      <th>Lote</th>
+      <th><button type="button" class="btn btn-danger btn-sm text-center bbbtn"
+        (click)="alterarImagem()">
+        <i class="{{mostrarImagem ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+        {{mostrarImagem ? 'Mostrar' : 'Ocultar'}}</button></th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Opções</th>
+
+      <!-- <th>Lote</th> -->
+    </tr>
+  </thead>
+  <!-- No Tbody - colocar ngif para caso a função exista apareça, se não nao aparece -->
+  <tbody *ngIf="projetos && projetos.length">
+    <tr *ngFor="let projetos of projetoFiltrados">
+      <td><a routerLink="/telainicial/Lista3/{{projetos.Lote}}" class="ativo">{{projetos.Lote}}</a></td>
+      <td><img [collapse]="mostrarImagem" [isAnimated]="true" src="/assets/coxinha.jpg" [style.width.px]="wthsize"></td>
+      <td>
+        <a routerLink="/telainicial/{{projetos.Tema}}" class="ativo">{{projetos.Tema}}</a>
+      </td>
+      <td><a routerLink="/telainicial/{{projetos.Local}}" class="ativo">{{projetos.Local}}</a></td>
+      <td></td>
+
+
+   <td>
+     <button type="button" class="btn btn-primary btn-sm "> <i class="fa fa-edit"></i> Editar</button>
+     <button type="button" (click)="openModal(template)" class="btn btn-danger btn-sm bbtn"><i class="fa fa-trash"></i> Excluir</button>
+    </td>
+      <!-- <td></td> -->
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!projetos.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h3>Nenhum item encontrado!</h3>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Tem certeza que quer deletar?</p>
+    <button type="button" class="btn btn-default" (click)="removeProjeto(projetos[0])">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template>
+
+<!-- <div echarts [options]="chartOption" class="demo-chart"></div> -->
+<br>
+<!-- <div class="d-grid gap-2 col-6 mx-auto">
+  <button class="btn btn-primary" type="button" routerLink="/telainicial/Lote">Lote: {{projetos[1].Lote}}</button>
+  <button class="btn btn-primary" type="button" routerLink="/telainicial/Local">Local: {{projetos[1].Local}}</button>
+</div> -->
