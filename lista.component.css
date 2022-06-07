@@ -1,0 +1,21 @@
+.height{
+  padding: 10px;
+}
+.bbtn{
+  margin-left: 5px;
+}
+
+a{
+  font-style: none;
+  color: red;
+  list-style: none;
+  text-decoration: none;
+}
+
+.ativo:visited {
+  color: rgb(255, 0, 43);
+}
+
+.ativo:focus{
+  color: rgb(0, 255, 0);
+}
