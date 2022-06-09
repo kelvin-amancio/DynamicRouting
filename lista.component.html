@@ -18,8 +18,8 @@
     </tr>
   </thead>
   <!-- No Tbody - colocar ngif para caso a função exista apareça, se não nao aparece -->
-  <tbody *ngIf="projetod">
-    <tr *ngFor="let projetos of projetod">
+  <tbody *ngIf="projetosd">
+    <tr *ngFor="let projetos of projetosd">
       <td>{{projetos.Lote}}</td>
       <td><img [collapse]="mostrarImagem" [isAnimated]="true" src="/assets/coxinha.jpg" [style.width.px]="wthsize"></td>
       <td>
@@ -36,7 +36,7 @@
       <!-- <td></td> -->
     </tr>
   </tbody>
-  <tfoot *ngIf="!projetos">
+  <tfoot *ngIf="!projetosd">
     <tr>
       <td colspan="8" class="text-center">
         <h3>Nenhum item encontrado!</h3>
@@ -46,7 +46,13 @@
 </table>
 </div></div>
 
-<h3>TESTE 1: {{projetos | json}}</h3><br>
-<h3>TESTE 2: {{projeto | json}}</h3><br>
-<h2>TESTE 3: {{projetod | json}}</h2>
+<!-- <h3>TESTE 1: {{projetos | json}}</h3><br>
+<h3>TESTE 2: {{projeto | json}}</h3><br> -->
+<h2>TESTE 3: {{projetosd | json}}</h2>
+</div>
+
+
+<div *ngIf="projetosd">
+  <p>Temas: {{projetosd[0].Local}}</p>
+
 </div>
